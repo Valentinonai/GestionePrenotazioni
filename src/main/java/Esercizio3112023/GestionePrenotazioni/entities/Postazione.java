@@ -1,10 +1,14 @@
 package Esercizio3112023.GestionePrenotazioni.entities;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
+import java.util.Random;
 
 @Entity
 @Table(name = "postazione")
@@ -13,7 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Postazione {
-    @Id
+ @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
     private String description;
@@ -23,7 +27,16 @@ public class Postazione {
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
 
-    @OneToOne(mappedBy = "postazione")
-    private Prenotazione prenotazione;
+    @OneToMany(mappedBy = "postazione")
+    private List< Prenotazione> prenotazione;
 
+
+
+ public void setEdificio(Edificio edificio) {
+  this.edificio = edificio;
+ }
+
+ public void setPrenotazione(Prenotazione prenotazione) {
+  this.prenotazione.add(prenotazione) ;
+ }
 }

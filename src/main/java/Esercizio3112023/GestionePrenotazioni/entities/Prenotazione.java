@@ -19,10 +19,22 @@ public class Prenotazione {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate data_prenotazione;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "postazione_id")
     private Postazione postazione;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void setData_prenotazione(LocalDate data_prenotazione) {
+        this.data_prenotazione = data_prenotazione;
+    }
+
+    public void setPostazione(Postazione postazione) {
+        this.postazione = postazione;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -1,5 +1,6 @@
 package Esercizio3112023.GestionePrenotazioni.entities;
 
+import com.github.javafaker.Faker;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
