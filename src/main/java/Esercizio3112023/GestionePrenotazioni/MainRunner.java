@@ -52,7 +52,7 @@ public class MainRunner implements CommandLineRunner {
             p.setUser(usersDAO.findById(3));
             prenotazioneDAO.save(p,3,prenotazioneDAO);
             log.info("***********************Ricerca postazioni per tipo postazione e città***********************");
-            List<Postazione> postazioneList=postazioneDAO.findPostazione(Tipo.SALA_RIUNIONI,"New Woodrow");
+            List<Postazione> postazioneList=postazioneDAO.findPostazione(Tipo.OPENSPACE,"Susanbury");
             if(postazioneList.size()==0) System.err.println("nessun elemento trovato");
             else
             postazioneList.forEach(elem-> log.info(String.valueOf(elem)));
