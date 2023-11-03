@@ -3,6 +3,7 @@ package Esercizio3112023.GestionePrenotazioni.DAO;
 import Esercizio3112023.GestionePrenotazioni.entities.Postazione;
 import Esercizio3112023.GestionePrenotazioni.entities.Prenotazione;
 import Esercizio3112023.GestionePrenotazioni.entities.User;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
+@ToString
 public class PrenotazioneSerrvice {
     @Autowired
     private PrenotazioneRepository prenotazioneRepository;
@@ -36,6 +38,7 @@ public class PrenotazioneSerrvice {
 
 public Optional<Postazione> getPostazioneById(LocalDate date, long id){
         return prenotazioneRepository.busyPostazione(date,id);
+
 }
 
 

@@ -45,7 +45,7 @@ public class MainRunner implements CommandLineRunner {
                 postazioneDAO.save(genericPostazione);
             }*/
 Postazione p =prenotazioneDAO.getPostazioneById(LocalDate.of(2023,11,03),3).orElseThrow(()->new Exception("Errore"));
-            System.err.println(p);
+            System.err.println(p.toString());
 
         } catch (Exception e) {
             log.info(e.getMessage());

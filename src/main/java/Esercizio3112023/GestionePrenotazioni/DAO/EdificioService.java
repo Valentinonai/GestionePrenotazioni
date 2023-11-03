@@ -2,12 +2,14 @@ package Esercizio3112023.GestionePrenotazioni.DAO;
 
 import Esercizio3112023.GestionePrenotazioni.entities.Edificio;
 import Esercizio3112023.GestionePrenotazioni.entities.User;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
+@ToString
 public class EdificioService {
     @Autowired
     private EdificioRepository edificioRepository;

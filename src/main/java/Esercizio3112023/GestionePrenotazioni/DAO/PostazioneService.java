@@ -3,6 +3,7 @@ package Esercizio3112023.GestionePrenotazioni.DAO;
 import Esercizio3112023.GestionePrenotazioni.entities.Postazione;
 import Esercizio3112023.GestionePrenotazioni.entities.Prenotazione;
 import Esercizio3112023.GestionePrenotazioni.entities.User;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ApplicationObjectSupport;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Service
 @Slf4j
+@ToString
 public class PostazioneService {
     @Autowired
     private PostazioneRepository postazioneRepository;

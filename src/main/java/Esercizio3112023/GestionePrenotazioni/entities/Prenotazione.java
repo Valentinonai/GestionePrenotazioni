@@ -1,10 +1,7 @@
 package Esercizio3112023.GestionePrenotazioni.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -40,5 +37,13 @@ public class Prenotazione {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Prenotazione{" +
+                "id=" + id +
+                ", data_prenotazione=" + data_prenotazione +
+                '}';
     }
 }

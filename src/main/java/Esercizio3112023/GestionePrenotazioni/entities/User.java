@@ -2,10 +2,7 @@ package Esercizio3112023.GestionePrenotazioni.entities;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -39,5 +36,15 @@ public class User {
 
     public void setPrenotazioni(Prenotazione prenotazione) {
         this.prenotazioni.add(prenotazione);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

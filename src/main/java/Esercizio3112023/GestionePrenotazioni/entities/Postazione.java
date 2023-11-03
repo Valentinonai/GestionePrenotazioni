@@ -13,7 +13,6 @@ import java.util.Random;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString
 public class Postazione {
  @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY )
@@ -26,7 +25,7 @@ public class Postazione {
     @JoinColumn(name = "edificio_id")
     private Edificio edificio;
 
-    @OneToMany(mappedBy = "postazione")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "postazione")
     private List< Prenotazione> prenotazione;
 
 
@@ -35,7 +34,17 @@ public class Postazione {
   this.edificio = edificio;
  }
 
-// public void setPrenotazione(Prenotazione prenotazione) {
+ @Override
+ public String toString() {
+  return "Postazione{" +
+          "id=" + id +
+          ", description='" + description + '\'' +
+          ", tipo=" + tipo +
+          ", numMax=" + numMax +
+          '}';
+ }
+
+ // public void setPrenotazione(Prenotazione prenotazione) {
 //  this.prenotazione.add(prenotazione) ;
 // }
 }

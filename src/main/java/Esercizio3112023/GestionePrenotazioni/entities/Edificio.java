@@ -2,10 +2,7 @@ package Esercizio3112023.GestionePrenotazioni.entities;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -22,6 +19,16 @@ public class Edificio {
     private String name;
     private String address;
     private String city;
-    @OneToMany(mappedBy = "edificio")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "edificio")
     private List<Postazione> postazioni;
+
+    @Override
+    public String toString() {
+        return "Edificio{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }
