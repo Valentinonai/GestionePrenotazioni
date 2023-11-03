@@ -44,7 +44,5 @@ public class Postazione {
           '}';
  }
 
- // public void setPrenotazione(Prenotazione prenotazione) {
-//  this.prenotazione.add(prenotazione) ;
-// }
+
 }

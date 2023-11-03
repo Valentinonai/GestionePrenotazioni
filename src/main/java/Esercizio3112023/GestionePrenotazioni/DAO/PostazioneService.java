@@ -2,6 +2,7 @@ package Esercizio3112023.GestionePrenotazioni.DAO;
 
 import Esercizio3112023.GestionePrenotazioni.entities.Postazione;
 import Esercizio3112023.GestionePrenotazioni.entities.Prenotazione;
+import Esercizio3112023.GestionePrenotazioni.entities.Tipo;
 import Esercizio3112023.GestionePrenotazioni.entities.User;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,7 @@ import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -35,5 +37,8 @@ public class PostazioneService {
         return postazioneRepository.findById(id).orElseThrow(() -> new Exception("Elemento non trovato"));
     }
 
+    public List<Postazione> findPostazione(Tipo tipo, String city){
+        return postazioneRepository.findPostazione(tipo,city);
+    }
 
 }

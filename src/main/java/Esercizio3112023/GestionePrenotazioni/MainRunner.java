@@ -13,6 +13,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Component
@@ -44,12 +46,16 @@ public class MainRunner implements CommandLineRunner {
                 Postazione genericPostazione = Postazione.builder().description(fkr.commerce().department()).numMax(rnd.nextInt(5,50)).tipo((n==0?Tipo.PRIVATO:n==1?Tipo.OPENSPACE:Tipo.SALA_RIUNIONI)).build();
                 postazioneDAO.save(genericPostazione);
             }*/
-
-Prenotazione p= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,05)).build();
-p.setPostazione(postazioneDAO.findById(3));
-p.setUser(usersDAO.findById(5));
-prenotazioneDAO.save(p,3,prenotazioneDAO);
-
+            System.out.println("******************************Effettuare prenotazione***************************");
+            Prenotazione p= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,05)).build();
+            p.setPostazione(postazioneDAO.findById(3));
+            p.setUser(usersDAO.findById(3));
+            prenotazioneDAO.save(p,3,prenotazioneDAO);
+            System.out.println("***********************Ricerca postazioni per tipo postazione e città***********************");
+            List<Postazione> postazioneList=postazioneDAO.findPostazione(Tipo.SALA_RIUNIONI,"New Woodrow");
+            if(postazioneList.size()==0) System.err.println("nessun elemento trovato");
+            else
+            postazioneList.forEach(elem-> System.err.println(elem));
         } catch (Exception e) {
             log.info(e.getMessage());
         }
