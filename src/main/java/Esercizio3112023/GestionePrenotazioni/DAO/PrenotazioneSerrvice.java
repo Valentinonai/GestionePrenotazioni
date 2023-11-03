@@ -23,7 +23,7 @@ public class PrenotazioneSerrvice {
 try{
    Optional<Postazione> pr = prenotazioneDAO.getPostazioneById(p.getData_prenotazione(),id_postazione);
    if(pr.isPresent())
-       System.err.println("Postazione occupata");
+    log.info("Postazione occupata");
    else{
 
        prenotazioneRepository.save(p);
