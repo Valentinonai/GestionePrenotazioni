@@ -47,10 +47,10 @@ public class MainRunner implements CommandLineRunner {
                 postazioneDAO.save(genericPostazione);
             }*/
          log.info("******************************Effettuare prenotazione***************************");
-            Prenotazione p= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,05)).build();
-            p.setPostazione(postazioneDAO.findById(3));
+            Prenotazione p= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,06)).build();
+            p.setPostazione(postazioneDAO.findById(8));
             p.setUser(usersDAO.findById(3));
-            prenotazioneDAO.save(p,3,prenotazioneDAO);
+            prenotazioneDAO.save(p,8,prenotazioneDAO);
             log.info("***********************Ricerca postazioni per tipo postazione e città***********************");
             List<Postazione> postazioneList=postazioneDAO.findPostazione(Tipo.OPENSPACE,"Susanbury");
             if(postazioneList.size()==0) System.err.println("nessun elemento trovato");

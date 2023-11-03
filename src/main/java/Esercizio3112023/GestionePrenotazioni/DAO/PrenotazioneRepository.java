@@ -14,8 +14,8 @@ import java.util.Optional;
 @Repository
 public interface PrenotazioneRepository extends JpaRepository<Prenotazione,Long> {
 // @Query(value = "select* from postazione join prenotazione on postazione_id=postazione.id where data_prenotazione=:data AND postazione.id=:id",nativeQuery = true)
- @Query("select p from Postazione p where p.id=:id and :data in(select pr.data_prenotazione from Prenotazione pr)")
-   Optional<Postazione> busyPostazione(LocalDate data, Long id);
+ @Query("select p from Prenotazione p where p.postazione.id=:id and p.data_prenotazione=:data ")
+   Optional<Prenotazione> busyPostazione(LocalDate data, Long id);
  @Query("select p from Prenotazione p where p.data_prenotazione=:data and p.user.id=:id_user")
     Optional<Prenotazione> findPrenotazionePerUser(LocalDate data,long id_user);
 }

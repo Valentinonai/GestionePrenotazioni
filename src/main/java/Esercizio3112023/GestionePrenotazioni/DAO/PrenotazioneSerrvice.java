@@ -21,7 +21,7 @@ public class PrenotazioneSerrvice {
 
     public void save(Prenotazione p,long id_postazione,PrenotazioneSerrvice prenotazioneDAO) {
 try{
-   Optional<Postazione> pr = prenotazioneDAO.getPostazioneById(p.getData_prenotazione(),id_postazione);
+   Optional<Prenotazione> pr = prenotazioneDAO.getPostazioneById(p.getData_prenotazione(),id_postazione);
     Optional<Prenotazione>prenotazione=prenotazioneDAO.findPrenotazionePerUser(p.getData_prenotazione(),p.getUser().getId());
    if(pr.isEmpty() && prenotazione.isEmpty())
    {
@@ -52,7 +52,7 @@ try{
         return prenotazioneRepository.findById(id).orElseThrow(() -> new Exception("Elemento non trovato"));
     }
 
-public Optional<Postazione> getPostazioneById(LocalDate date, long id){
+public Optional<Prenotazione> getPostazioneById(LocalDate date, long id){
         return prenotazioneRepository.busyPostazione(date,id);
 
 }
