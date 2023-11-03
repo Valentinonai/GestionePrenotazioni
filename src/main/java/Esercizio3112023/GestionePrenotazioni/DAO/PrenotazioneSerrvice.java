@@ -19,10 +19,22 @@ public class PrenotazioneSerrvice {
     @Autowired
     private PrenotazioneRepository prenotazioneRepository;
 
-    public void save(Prenotazione p) {
+    public void save(Prenotazione p,long id_postazione,PrenotazioneSerrvice prenotazioneDAO) {
+try{
+   Optional<Postazione> pr = prenotazioneDAO.getPostazioneById(p.getData_prenotazione(),id_postazione);
+   if(pr.isPresent())
+       System.err.println("Postazione occupata");
+   else{
 
-        prenotazioneRepository.save(p);
-        log.info( " salvato correttamente!");
+       prenotazioneRepository.save(p);
+       System.err.println( " salvato correttamente!");
+   }
+
+}catch (Exception e){
+    log.error(e.getMessage());
+}
+
+
     }
 
     public void findByIdAndDelete(long id) throws Exception {

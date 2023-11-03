@@ -44,8 +44,11 @@ public class MainRunner implements CommandLineRunner {
                 Postazione genericPostazione = Postazione.builder().description(fkr.commerce().department()).numMax(rnd.nextInt(5,50)).tipo((n==0?Tipo.PRIVATO:n==1?Tipo.OPENSPACE:Tipo.SALA_RIUNIONI)).build();
                 postazioneDAO.save(genericPostazione);
             }*/
-Postazione p =prenotazioneDAO.getPostazioneById(LocalDate.of(2023,11,03),3).orElseThrow(()->new Exception("Errore"));
-            System.err.println(p.toString());
+
+Prenotazione p= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,05)).build();
+p.setPostazione(postazioneDAO.findById(3));
+p.setUser(usersDAO.findById(5));
+prenotazioneDAO.save(p,3,prenotazioneDAO);
 
         } catch (Exception e) {
             log.info(e.getMessage());
