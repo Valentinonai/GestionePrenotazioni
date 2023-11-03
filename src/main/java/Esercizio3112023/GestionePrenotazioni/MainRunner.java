@@ -56,6 +56,11 @@ public class MainRunner implements CommandLineRunner {
             if(postazioneList.size()==0) System.err.println("nessun elemento trovato");
             else
             postazioneList.forEach(elem-> log.info(String.valueOf(elem)));
+            log.info("***********************Una prenotazione per data***********************");
+            Prenotazione p1= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,06)).build();
+            p1.setPostazione(postazioneDAO.findById(4));
+            p1.setUser(usersDAO.findById(5));
+            prenotazioneDAO.save(p1,3,prenotazioneDAO);
         } catch (Exception e) {
             log.info(e.getMessage());
         }

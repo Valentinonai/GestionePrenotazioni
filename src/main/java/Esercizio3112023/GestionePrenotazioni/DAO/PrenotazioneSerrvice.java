@@ -22,12 +22,16 @@ public class PrenotazioneSerrvice {
     public void save(Prenotazione p,long id_postazione,PrenotazioneSerrvice prenotazioneDAO) {
 try{
    Optional<Postazione> pr = prenotazioneDAO.getPostazioneById(p.getData_prenotazione(),id_postazione);
-   if(pr.isPresent())
-    log.info("Postazione occupata");
-   else{
-
+    Optional<Prenotazione>prenotazione=prenotazioneDAO.findPrenotazionePerUser(p.getData_prenotazione(),p.getUser().getId());
+   if(pr.isEmpty() && prenotazione.isEmpty())
+   {
        prenotazioneRepository.save(p);
        System.err.println( " salvato correttamente!");
+   }
+
+   else{
+        log.info("Postazione occupata o prenotazione già presente per la data selezionata");
+
    }
 
 }catch (Exception e){
@@ -53,6 +57,8 @@ public Optional<Postazione> getPostazioneById(LocalDate date, long id){
 
 }
 
-
+   public  Optional<Prenotazione> findPrenotazionePerUser(LocalDate data,long id_user){
+        return  prenotazioneRepository.findPrenotazionePerUser(data,id_user);
+   }
 
 }
