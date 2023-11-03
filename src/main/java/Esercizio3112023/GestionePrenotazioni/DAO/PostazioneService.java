@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ApplicationObjectSupport;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class PostazioneService {
@@ -30,4 +32,6 @@ public class PostazioneService {
     public Postazione findById(long id) throws Exception{
         return postazioneRepository.findById(id).orElseThrow(() -> new Exception("Elemento non trovato"));
     }
+
+
 }

@@ -2,10 +2,7 @@ package Esercizio3112023.GestionePrenotazioni.entities;
 
 import com.github.javafaker.Faker;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 import java.util.Random;
@@ -16,11 +13,13 @@ import java.util.Random;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString
 public class Postazione {
  @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private long id;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
     private int numMax;
     @ManyToOne
@@ -36,7 +35,7 @@ public class Postazione {
   this.edificio = edificio;
  }
 
- public void setPrenotazione(Prenotazione prenotazione) {
-  this.prenotazione.add(prenotazione) ;
- }
+// public void setPrenotazione(Prenotazione prenotazione) {
+//  this.prenotazione.add(prenotazione) ;
+// }
 }
