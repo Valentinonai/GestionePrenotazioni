@@ -57,10 +57,10 @@ public class MainRunner implements CommandLineRunner {
             else
             postazioneList.forEach(elem-> log.info(String.valueOf(elem)));
             log.info("***********************Una prenotazione per data***********************");
-            Prenotazione p1= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,06)).build();
-            p1.setPostazione(postazioneDAO.findById(4));
-            p1.setUser(usersDAO.findById(5));
-            prenotazioneDAO.save(p1,3,prenotazioneDAO);
+            Prenotazione p1= Prenotazione.builder().data_prenotazione(LocalDate.of(2023,11,07)).build();
+            p1.setPostazione(postazioneDAO.findById(5));
+            p1.setUser(usersDAO.findById(4));
+            prenotazioneDAO.save(p1,p1.getPostazione().getId(),prenotazioneDAO);
         } catch (Exception e) {
             log.info(e.getMessage());
         }
