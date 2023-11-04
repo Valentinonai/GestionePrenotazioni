@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface PostazioneRepository extends JpaRepository<Postazione,Long> {
-    @Query("select p from Postazione p where p.tipo=:tipo and p.edificio.city=:city")
-   List<Postazione>  findPostazione(Tipo tipo, String city);
+//    @Query("select p from Postazione p where p.tipo=:tipo and p.edificio.city=:city")
+//   List<Postazione>  findPostazione(Tipo tipo, String city);
+    List<Postazione> findByTipoAndEdificioCity(Tipo tipo, String city);
 }

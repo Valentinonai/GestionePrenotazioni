@@ -38,7 +38,11 @@ public class PostazioneService {
     }
 
     public List<Postazione> findPostazione(Tipo tipo, String city){
-        return postazioneRepository.findPostazione(tipo,city);
+//        return postazioneRepository.findPostazione(tipo,city);
+        return postazioneRepository.findByTipoAndEdificioCity(tipo,city);
     }
+
+
+
 
 }
